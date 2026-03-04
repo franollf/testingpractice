@@ -4,22 +4,25 @@ import sqlite3
 
 # Connect to database
 conn = sqlite3.connect("translink_test.db")
+print(pd.read_sql("SELECT * FROM trips_raw", conn))
 
 # Create raw dataset
 raw_data = pd.DataFrame({
     "trip_id": [1, 2, 3, 4, 5],
     "passenger_id": [101, 102, 103, 104, 105],
-    "trip_distance_km": [5.2, 3.1, 3.4, 8.5, 2.0],
-    "fare": [3.25, 3.25, 3.25, 1.24, 3.25]
+    "trip_distance_km": [5.2, 3.1, 4.0, 8.5, 2.0],
+    "fare": [3.25, 3.25, 3.25, 3.25, 3.25]
 })
 
 # Load into SQL
 raw_data.to_sql("trips_raw", conn, if_exists="replace", index=False)
 
-
+print(pd.read_sql("SELECT * FROM trips_raw", conn))
 # -----------------------------
 # 1. Row Count Validation
 # -----------------------------
+
+
 def test_row_count():
     sql_count = pd.read_sql(
         "SELECT COUNT(*) AS count FROM trips_raw", conn
