@@ -9,8 +9,8 @@ conn = sqlite3.connect("translink_test.db")
 raw_data = pd.DataFrame({
     "trip_id": [1, 2, 3, 4, 5],
     "passenger_id": [101, 102, 103, 104, 105],
-    "trip_distance_km": [5.2, 3.1, None, 8.5, 2.0],
-    "fare": [3.25, 3.25, 3.25, None, 3.25]
+    "trip_distance_km": [5.2, 3.1, 3.4, 8.5, 2.0],
+    "fare": [3.25, 3.25, 3.25, 1.24, 3.25]
 })
 
 # Load into SQL
